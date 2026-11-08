@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task | Task Mate</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Task Mate</h1>
+        <p>Update your task details</p>
+    </div>
+
+    <h2>Edit Task</h2>
+
+    <form class="edit-task-form" method="POST">
+
+        {% csrf_token %}
+
+        <label>Task Title:</label>
+
+        <input type="text" name="title" value="{{ task.title }}">
+
+        <br><br>
+
+        <label>Description:</label>
+
+        <textarea name="description">{{ task.description }}</textarea>
+
+        <br><br>
+
+        <button type="submit">Update Task</button>
+
+        <a href="{% url 'home' %}">
+            <button type="button" class="cancel-btn">Cancel</button>
+        </a>
+
+    </form>
+
+</body>
+</html>
